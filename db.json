@@ -1,15 +1,15 @@
 {
   "ramens": [
     {
-        "id": 1,
-        "name": "Shoyu Ramen",
-        "restaurant": "Nonono",
-        "image": "./assets/ramen/shoyu.jpg",
-        "rating": 7,
-        "comment": "Delish. Can't go wrong with a classic!"
+      "id": "1",
+      "name": "Shoyu Ramen",
+      "restaurant": "Nonono",
+      "image": "./assets/ramen/shoyu.jpg",
+      "rating": 7,
+      "comment": "Delish. Can't go wrong with a classic!"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Naruto Ramen",
       "restaurant": "Naruto",
       "image": "./assets/ramen/naruto.jpg",
@@ -17,7 +17,7 @@
       "comment": "My absolute fave!"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Nirvana Shiromaru",
       "restaurant": "Ippudo",
       "image": "./assets/ramen/nirvana.jpg",
@@ -25,7 +25,7 @@
       "comment": "Do buy the hype."
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Gyukotsu Ramen",
       "restaurant": "Za-Ya Ramen",
       "image": "./assets/ramen/gyukotsu.jpg",
@@ -33,12 +33,30 @@
       "comment": "Good to the last drop."
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Kojiro Red Ramen",
       "restaurant": "Ramen-Ya",
       "image": "./assets/ramen/kojiro.jpg",
       "rating": 6,
       "comment": "Perfect for a cold night."
+    },
+    {
+      "id": "c856",
+      "name": "Cripsy Chicken",
+      "restaurant": "kfc",
+      "image": "https://images.stockcake.com/public/d/c/c/dcc5af96-21bb-4bde-a388-d2b3f7ac278c_large/crispy-chicken-bucket-stockcake.jpg",
+      "rating": "9",
+      "comment": "delicious"
+    },
+    {
+      "id": "7cf5",
+      "name": "pancake",
+      "restaurant": "jojo",
+      "image": "https://images.stockcake.com/public/c/2/c/c2c9c7e7-d8fc-4bc6-8e8f-e498e40f8f14_large/flipping-perfect-pancake-stockcake.jpg",
+      "rating": "6",
+      "comment": "yammy"
     }
+    
+
   ]
 }

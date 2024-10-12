@@ -2,20 +2,109 @@
 
 // Callbacks
 const handleClick = (ramen) => {
-  // Add code
+  const placeHolder = document.getElementsByClassName("detail-image")[0]
+  
+  placeHolder.src =ramen.image
+
+  const name = document.querySelector("#ramen-detail h2")
+  const restaurant = document.querySelector("#ramen-detail h3")
+  const ratings = document.getElementById("rating-display")
+  const comment = document.getElementById("comment-display")
+  name.textContent =ramen.name
+  restaurant.textContent =ramen.restaurant
+  ratings.textContent =ramen.rating
+  comment.textContent = ramen.comment 
+
 };
+
 
 const addSubmitListener = () => {
-  // Add code
+  const form = document.querySelector("#new-ramen")
+  form.addEventListener("submit", (event)=>{
+    event.preventDefault()
+    const newRaven ={
+      name:form["new-name"].value,
+      restaurant:form["new-restaurant"].value,
+      image:form["new-image"].value,
+      rating:form["new-rating"].value,
+      comment:form["new-comment"].value
+
+      
+    }
+
+    fetch("http://localhost:3000/ramens",{
+      method:"POST",
+      headers:{
+        "content-type":"application/json",
+        "Accept":"application/json",
+      },
+      body:JSON.stringify(newRaven)
+    })
+    .then((response)=> response.json())
+    .then((data) =>{
+      displayRamens(newRaven)
+      form.reset()
+    })
+  })
 }
 
+
+
 const displayRamens = () => {
-  // Add code
+   fetch("http://localhost:3000/ramens")
+  .then((response)=> response.json())
+  .then((ramens) => {
+    let div = document.getElementById("ramen-menu")
+    div.innerHTML =" ";
+    ramens.forEach((ramen,index) => {
+      let img = document.createElement("img")
+      img.src = ramen.image;
+    img.addEventListener('click', () => handleClick(ramen));
+    div.appendChild(img);
+
+    if(index === 0){
+      handleClick(ramen)
+    }
+  });
+  })
+  .catch((error)=>{
+      console.error("cannot display ramens",error)
+    })
 };
 
+const updateFeatureRamen =()=>{
+const formEdit = document.getElementById("edit-ramen")
+console.log(formEdit);
+formEdit.addEventListener("submit",(e)=>{
+  e.preventDefault();
+  const editRamen ={
+    rating:formEdit["new-rating"].value,
+    comment:formEdit["new-comment"].value
+  }
+
+  fetch("http://localhost:3000/ramens",{
+    method:"PATCH",
+    headers:{
+      "content-type":"application/json",
+      "Accept":"application/json"
+    },
+    body:JSON.stringify(editRamen)
+  })
+  .then((response) => response.json())
+  .then((data) =>{
+    displayRamens()
+    formEdit.reset()
+
+  })
+})
+}
+
 const main = () => {
-  // Invoke displayRamens here
-  // Invoke addSubmitListener here
+  document.addEventListener("DOMContentLoaded",()=>{
+    displayRamens()
+    addSubmitListener()
+    updateFeatureRamen()
+  })
 }
 
 main()
