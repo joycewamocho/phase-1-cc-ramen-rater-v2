@@ -1,5 +1,5 @@
 // index.js
-
+let ramenCurrentId = null;
 // Callbacks
 const handleClick = (ramen) => {
   const placeHolder = document.getElementsByClassName("detail-image")[0]
@@ -15,6 +15,8 @@ const handleClick = (ramen) => {
   ratings.textContent =ramen.rating
   comment.textContent = ramen.comment 
 
+  ramenCurrentId = ramen.id;
+
 };
 
 
@@ -22,7 +24,7 @@ const addSubmitListener = () => {
   const form = document.querySelector("#new-ramen")
   form.addEventListener("submit", (event)=>{
     event.preventDefault()
-    const newRaven ={
+    const newRamen ={
       name:form["new-name"].value,
       restaurant:form["new-restaurant"].value,
       image:form["new-image"].value,
@@ -38,11 +40,11 @@ const addSubmitListener = () => {
         "content-type":"application/json",
         "Accept":"application/json",
       },
-      body:JSON.stringify(newRaven)
+      body:JSON.stringify(newRamen)
     })
     .then((response)=> response.json())
     .then((data) =>{
-      displayRamens(newRaven)
+      displayRamens(newRamen)
       form.reset()
     })
   })
@@ -74,7 +76,7 @@ const displayRamens = () => {
 
 const updateFeatureRamen =()=>{
 const formEdit = document.getElementById("edit-ramen")
-console.log(formEdit);
+
 formEdit.addEventListener("submit",(e)=>{
   e.preventDefault();
   const editRamen ={
@@ -82,7 +84,7 @@ formEdit.addEventListener("submit",(e)=>{
     comment:formEdit["new-comment"].value
   }
 
-  fetch("http://localhost:3000/ramens",{
+  fetch(`http://localhost:3000/ramens/${ramenCurrentId}`,{
     method:"PATCH",
     headers:{
       "content-type":"application/json",

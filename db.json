@@ -53,10 +53,16 @@
       "name": "pancake",
       "restaurant": "jojo",
       "image": "https://images.stockcake.com/public/c/2/c/c2c9c7e7-d8fc-4bc6-8e8f-e498e40f8f14_large/flipping-perfect-pancake-stockcake.jpg",
+      "rating": "10",
+      "comment": "yummy yummy"
+    },
+    {
+      "id": "7f22",
+      "name": "Burger",
+      "restaurant": "Macs",
+      "image": "https://images.stockcake.com/public/0/4/4/044ad348-94f2-4863-acfb-af4bdbf23942_large/juicy-stacked-burger-stockcake.jpg",
       "rating": "6",
-      "comment": "yammy"
+      "comment": "anything but sweetness"
     }
-    
-
   ]
 }
